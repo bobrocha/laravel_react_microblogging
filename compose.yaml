@@ -1,0 +1,38 @@
+services:
+  backend:
+    build: ./backend
+    volumes:
+      - ./backend:/var/www/html
+    networks:
+      - micro-blogging
+    restart: unless-stopped
+
+  webserver:
+    image: nginx:latest
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./backend:/var/www/html
+      - ./server/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - backend
+    networks:
+      - micro-blogging
+
+  db:
+    image: mysql:8.0
+    volumes:
+      - micro-blogging-db:/var/lib/mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: micro_blogging
+      MYSQL_ROOT_PASSWORD: secret
+    networks:
+      - micro-blogging
+
+volumes:
+  micro-blogging-db:
+
+networks:
+  micro-blogging:
