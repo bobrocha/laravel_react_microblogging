@@ -6,7 +6,11 @@ services:
     networks:
       - micro-blogging
     restart: unless-stopped
-    command: sh -c "composer install -d /var/www/html && php-fpm"
+    command: >
+      sh -c "composer install -d /var/www/html &&
+            if [ ! -f /var/www/html/.env ]; then cp /var/www/html/.env.example .env; fi &&
+            php-fpm &&
+            php artisan key:generate --ansi"
 
   webserver:
     image: nginx:latest
