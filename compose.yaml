@@ -6,6 +6,7 @@ services:
     networks:
       - micro-blogging
     restart: unless-stopped
+    command: sh -c "composer install -d /var/www/html && php-fpm"
 
   webserver:
     image: nginx:latest
