@@ -7,10 +7,11 @@ services:
       - micro-blogging
     restart: unless-stopped
     command: >
-      sh -c "composer install -d /var/www/html &&
-            if [ ! -f /var/www/html/.env ]; then cp /var/www/html/.env.example .env; fi &&
-            php-fpm &&
-            php artisan key:generate --ansi"
+      sh -c "cd /var/www/html && configs:
+            composer install -d /var/www/html &&
+            if [ ! -f /var/www/html/.env ]; then cp /var/www/html/.env.example /var/www/html/.env; fi &&
+            php artisan key:generate --ansi &&
+            php-fpm"
 
   webserver:
     image: nginx:latest
