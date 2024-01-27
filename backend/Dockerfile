@@ -14,7 +14,9 @@ RUN apt-get update && apt-get install -y \
     vim \
     unzip \
     git \
-    curl
+    curl \
+    nodejs \
+    npm
 
 # Now that packages are installed clear the cache on the system.
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
