@@ -7,6 +7,8 @@ services:
       - micro-blogging
     restart: unless-stopped
     entrypoint: /usr/local/bin/entrypoint.sh
+    depends_on:
+      - db
 
   webserver:
     image: nginx:latest

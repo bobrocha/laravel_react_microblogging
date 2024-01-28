@@ -11,6 +11,7 @@ if [ ! -f "$app_dir/.env" ]; then
     cp "$app_dir/.env.example" "$app_dir/.env";
     composer install -d "$app_dir"
     php "$app_dir/artisan" key:generate --ansi
+    npm install --prefix "$app_dir"
     php "$app_dir/artisan" migrate
 fi
 
