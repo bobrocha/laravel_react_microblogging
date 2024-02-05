@@ -9,6 +9,8 @@ services:
     entrypoint: /usr/local/bin/entrypoint.sh
     depends_on:
       - db
+    ports:
+      - "5173:5173" # Port for Vite
 
   webserver:
     image: nginx:latest
