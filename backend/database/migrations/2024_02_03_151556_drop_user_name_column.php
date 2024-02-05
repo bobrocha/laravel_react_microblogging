@@ -14,12 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('users', function(Blueprint $table) {
-            $table->string('first_name');
-            $table->string('last_name');
-            $table->string('middle_name')->nullable();
-            $table->string('username')->unique();
-            $table->date('birthdate');
-            $table->enum('gender', ['male', 'female'])->nullable();
+            $table->dropColumn('name');
         });
     }
 

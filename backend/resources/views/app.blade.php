@@ -5,10 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Mciro Blogging</title>
+    @viteReactRefresh
+    @vite([
+        'resources/css/app.css',
+        'resources/js/main.jsx',
+    ])
 </head>
 <body>
-    <div id="app">
-        App entry point
-    </div>
+    <div id="app"></div>
 </body>
 </html>
