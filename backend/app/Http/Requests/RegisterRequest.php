@@ -38,9 +38,9 @@ class RegisterRequest extends FormRequest
         return [
             'first_name'  => 'required|alpha:ascii',
             'last_name'   => 'required|alpha:ascii',
-            'middle_name' => 'alpha:ascii',
+            'middle_name' => 'nullable|alpha:ascii',
             'username'    => 'required|unique:users|alpha_num:ascii|min:8',
-            'birthdate'   => 'required|date_format:m/d/Y',
+            'birthdate'   => 'required|date_format:Y-m-d',
             'email'       => 'required|email:rfc,dns|unique:users',
             'gender'      => ['regex:/^(male|female)$/'],// Due to pipe in regex
             'password'    => 'required:string|min:8|confirmed'
