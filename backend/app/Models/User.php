@@ -8,7 +8,6 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\Casts\Attribute;
-use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
 
 class User extends Authenticatable
@@ -49,19 +48,6 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
-    /**
-     * Mutator/accessor for the birthdate column
-     *
-     * @return Attribute
-     */
-    protected function birthdate() : Attribute
-    {
-        return Attribute::make(
-            get : fn($value) => $value,
-            set : fn($value) => Carbon::createFromFormat('m/d/Y', $value)->format('Y-m-d'),
-        );
-    }
 
     /**
      * Mutator/accessor for the password column

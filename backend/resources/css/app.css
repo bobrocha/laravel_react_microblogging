@@ -1,3 +1,47 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+button.loading {
+    color: transparent;
+    position: relative;
+}
+
+button.loading::before {
+    position: absolute;
+    content: '';
+    top: 50%;
+    left: 50%;
+    border: 0.2rem solid rgba(0, 0, 0, 0.2);
+    border-radius: 1rem;
+    width: 1rem;
+    height: 1rem;
+    transform: translate(-50%, -50%);
+}
+
+button.loading::after {
+    position: absolute;
+    content: '';
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 1em;
+    height: 1em;
+    animation: button-spin .6s linear;
+    animation-iteration-count: infinite;
+    border-radius: 2rem;
+    border-color: #fff transparent transparent;
+    border-style: solid;
+    border-width: .2em;
+    box-shadow: 0 0 0 1px transparent
+}
+
+@keyframes button-spin {
+    from {
+        transform: translate(-50%, -50%) rotate(0)
+    }
+
+    to {
+        transform: translate(-50%, -50%) rotate(360deg)
+    }
+}
