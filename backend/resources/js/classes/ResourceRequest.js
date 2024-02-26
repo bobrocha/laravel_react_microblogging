@@ -25,7 +25,7 @@ export default class ResourceRequest {
         }
     }
 
-    async post(payload = {}) { await this.sleep();
+    async post(payload = {}) {
         const options = {
             method  : 'POST',
             body    : JSON.stringify(payload),
