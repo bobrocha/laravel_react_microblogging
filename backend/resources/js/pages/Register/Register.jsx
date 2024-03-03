@@ -1,4 +1,6 @@
-import React from 'react';
+import Notice from '@/components/layout/ui/Notice';
+import Input  from '@/components/layout/ui/Input';
+import Button from '@/components/layout/ui/Button';
 
 import {
     Form,
@@ -33,9 +35,9 @@ export default function Register() {
                     name="first_name"
                     className="block border w-full p-1.5 rounded-md"
                     placeholder="First Name"
-                    required
+                    // required
                 />
-                {errors.first_name && !isSubmitting && <div className="bg-red-200 text-red-600 notice py-1.5 px-2 my-1 rounded-md">{errors.first_name}</div>}
+                {errors.first_name && !isSubmitting && <Notice theme="red">{errors.first_name}</Notice>}
                 </div>
                 <div className="input-wrapper w-full flex flex-col">
                 <input
@@ -43,9 +45,9 @@ export default function Register() {
                     name="last_name"
                     className="block border w-full p-1.5 rounded-md"
                     placeholder="Last Name"
-                    required
+                    // required
                 />
-                {errors.last_name && !isSubmitting && <div className="bg-red-200 text-red-600 notice py-1.5 px-2 my-1 rounded-md">{errors.last_name}</div>}
+                {errors.last_name && !isSubmitting && <Notice theme="red">{errors.last_name}</Notice>}
                 </div>
             </div>
             <div className="flex mt-4 space-x-1.5">
@@ -56,7 +58,7 @@ export default function Register() {
                     className="block border w-full p-1.5 rounded-md"
                     placeholder="Middle Name"
                 />
-                {errors.middle_name && !isSubmitting && <div className="bg-red-200 text-red-600 notice py-1.5 px-2 my-1 rounded-md">{errors.middle_name}</div>}
+                {errors.middle_name && !isSubmitting && <Notice theme="red">{errors.middle_name}</Notice>}
                 </div>
                 <div className="input-wrapper w-full flex flex-col">
                 <input
@@ -64,9 +66,9 @@ export default function Register() {
                     name="username"
                     className="block border w-full p-1.5 rounded-md"
                     placeholder="Username"
-                    required
+                    // required
                 />
-                {errors.username && !isSubmitting && <div className="bg-red-200 text-red-600 notice py-1.5 px-2 my-1 rounded-md">{errors.username}</div>}
+                {errors.username && !isSubmitting && <Notice theme="red">{errors.username}</Notice>}
                 </div>
             </div>
             <div className="mt-4">
@@ -77,9 +79,9 @@ export default function Register() {
                     name="birthdate"
                     className="block border w-full p-1.5 rounded-md"
                     id="birthdate"
-                    required
+                    // required
                 />
-                {errors.birthdate && !isSubmitting && <div className="bg-red-200 text-red-600 notice py-1.5 px-2 my-1 rounded-md">{errors.birthdate}</div>}
+                {errors.birthdate && !isSubmitting && <Notice theme="red">{errors.birthdate}</Notice>}
                 </div>
             </div>
             <div className="flex mt-4 space-x-1.5">
@@ -89,20 +91,20 @@ export default function Register() {
                     name="email"
                     className="block border w-full p-1.5 rounded-md"
                     placeholder="Email"
-                    required
+                    // required
                 />
-                {errors.email && !isSubmitting && <div className="bg-red-200 text-red-600 notice py-1.5 px-2 my-1 rounded-md">{errors.email}</div>}
+                {errors.email && !isSubmitting && <Notice theme="red">{errors.email}</Notice>}
                 </div>
                 <div className="input-wrapper w-full flex flex-col">
                 <select
                     className="block border w-full p-1.5 rounded-md"
-                    required
+                    // required
                     name="gender"
                 >
                     <option value="male">Male</option>
                     <option value="female">Female</option>
                 </select>
-                {errors.gender && !isSubmitting && <div className="bg-red-200 text-red-600 notice py-1.5 px-2 my-1 rounded-md">{errors.gender}</div>}
+                {errors.gender && !isSubmitting && <Notice theme="red">{errors.gender}</Notice>}
                 </div>
             </div>
             <div className="flex mt-4 space-x-1.5">
@@ -112,9 +114,9 @@ export default function Register() {
                     name="password"
                     className="block border w-full p-1.5 rounded-md"
                     placeholder="Password"
-                    required
+                    // required
                 />
-                {errors.password && !isSubmitting && <div className="bg-red-200 text-red-600 notice py-1.5 px-2 my-1 rounded-md">{errors.password}</div>}
+                {errors.password && !isSubmitting && <Notice theme="red">{errors.password}</Notice>}
                 </div>
                 <div className="input-wrapper w-full flex flex-col">
                 <input
@@ -122,9 +124,9 @@ export default function Register() {
                     name="password_confirmation"
                     className="block border w-full p-1.5 rounded-md"
                     placeholder="Confirm Password"
-                    required
+                    // required
                 />
-                {errors.password_confirmation && !isSubmitting && <div className="bg-red-200 text-red-600 notice py-1.5 px-2 my-1 rounded-md">{errors.password_confirmation}</div>}
+                {errors.password_confirmation && !isSubmitting && <Notice theme="red">{errors.password_confirmation}</Notice>}
                 </div>
             </div>
             </div>
@@ -133,13 +135,15 @@ export default function Register() {
             >
             {!isSubmitting && success && <div className="bg-lime-200 text-lime-600 notice py-1.5 px-2 my-1 rounded-md">Succesfully Registered</div>}
             <div className="form-actions flex">
-                <button
-                type="submit"
-                className={`border px-4 py-1.5 rounded-md bg-lime-500 hover:bg-lime-600 text-slate-50 ml-auto w-full md:w-auto ${isSubmitting ? 'loading' : ''}`}
-                disabled={isSubmitting}
+                <Button
+                    type="submit"
+                    theme="lime"
+                    disabled={isSubmitting}
+                    loading={isSubmitting}
+                    className="ml-auto"
                 >
                 Sign up
-                </button>
+                </Button>
             </div>
             </div>
         </Form>

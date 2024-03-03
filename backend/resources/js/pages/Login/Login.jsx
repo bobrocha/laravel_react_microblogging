@@ -1,5 +1,6 @@
-import React from 'react';
-import Input from '@/components/layout/ui/Input';
+import Input  from '@/components/layout/ui/Input';
+import Button from '@/components/layout/ui/Button';
+import Notice from '@/components/layout/ui/Notice';
 
 import {
     Form,
@@ -27,6 +28,8 @@ export default function Login() {
                             name="email"
                             placeholder="Email"
                             required={true}
+                            error={false}
+                            disabled={false}
                         />
                     </div>
                     <div className="input-wrapper w-full flex flex-col mt-4">
@@ -35,16 +38,21 @@ export default function Login() {
                             name="password"
                             placeholder="Passsword"
                             required={true}
+                            error={false}
+                            disabled={false}
                         />
                     </div>
                 </div>
                 <div className="form-footer flex mt-4 p-3 border-t flex-col">
-                    <div class="form-message"> foo</div>
+                    <Notice
+                        theme="sky"
+                    >Lorem Ipsum is simply dummy text of the printing and vcbcc</Notice>
                     <div className="form-actions flex">
-                        <button
+                        <Button
                             type="submit"
-                            className={`border px-4 py-1.5 rounded-md bg-lime-500 hover:bg-lime-600 text-slate-50 w-full md:w-auto ml-auto`}
-                        >Login</button>
+                            theme="lime"
+                            className="ml-auto my-1 mx-1.5"
+                        >Log In</Button>
                     </div>
                 </div>
             </Form>
