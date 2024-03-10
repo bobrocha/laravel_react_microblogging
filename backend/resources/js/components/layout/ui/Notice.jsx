@@ -7,7 +7,7 @@ export default forwardRef(({
     ...props
 }, ref) => {
     const [visible, setVisible] = useState(true);
-    const baseClass             = [`relative border px-5 py-3 mb-1 rounded-md notice ${visible ? 'block' : 'hidden'}`];
+    const baseClass             = [`relative border px-5 py-3 rounded-md notice ${visible ? 'block' : 'hidden'}`];
 
     const themes = {
         green     : ['bg-green-200 border-green-300 text-green-600'],
@@ -40,7 +40,6 @@ export default forwardRef(({
             <CloseButton
                 onClick={() => {
                     setVisible(!visible)
-                    console.log(visible)
                 }}
             />
         </div>

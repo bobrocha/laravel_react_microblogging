@@ -30,110 +30,154 @@ export default function Register() {
             <div className="form-main px-4">
             <div className="flex space-x-1.5  mt-4">
                 <div className="input-wrapper w-full flex flex-col">
-                <input
+                <Input
                     type="text"
                     name="first_name"
-                    className="block border w-full p-1.5 rounded-md"
                     placeholder="First Name"
-                    // required
+                    disabled={isSubmitting}
+                    error={errors.first_name}
+                    required
                 />
-                {errors.first_name && !isSubmitting && <Notice theme="red">{errors.first_name}</Notice>}
+                {errors.first_name && !isSubmitting && <Notice
+                        className="mt-1"
+                        theme="red"
+                    >{errors.first_name}</Notice>
+                }
                 </div>
                 <div className="input-wrapper w-full flex flex-col">
-                <input
+                <Input
                     type="text"
                     name="last_name"
-                    className="block border w-full p-1.5 rounded-md"
                     placeholder="Last Name"
-                    // required
+                    disabled={isSubmitting}
+                    error={errors.last_name}
+                    required
                 />
-                {errors.last_name && !isSubmitting && <Notice theme="red">{errors.last_name}</Notice>}
+                {errors.last_name && !isSubmitting && <Notice
+                        className="mt-1"
+                        theme="red"
+                    >{errors.last_name}</Notice>
+                }
                 </div>
             </div>
             <div className="flex mt-4 space-x-1.5">
                 <div className="input-wrapper w-full flex flex-col">
-                <input
+                <Input
                     type="text"
                     name="middle_name"
-                    className="block border w-full p-1.5 rounded-md"
                     placeholder="Middle Name"
+                    disabled={isSubmitting}
                 />
-                {errors.middle_name && !isSubmitting && <Notice theme="red">{errors.middle_name}</Notice>}
+                {errors.middle_name && !isSubmitting && <Notice
+                        className="mt-1"
+                        theme="red"
+                    >{errors.middle_name}</Notice>
+                }
                 </div>
                 <div className="input-wrapper w-full flex flex-col">
-                <input
+                <Input
                     type="text"
                     name="username"
-                    className="block border w-full p-1.5 rounded-md"
                     placeholder="Username"
-                    // required
+                    disabled={isSubmitting}
+                    error={errors.username}
+                    required
                 />
-                {errors.username && !isSubmitting && <Notice theme="red">{errors.username}</Notice>}
+                {errors.username && !isSubmitting && <Notice
+                        className="mt-1"
+                        theme="red"
+                    >{errors.username}</Notice>
+                }
                 </div>
             </div>
             <div className="mt-4">
                 <p className="text-gray-500">Birthdate:</p>
                 <div className="input-wrapper w-full flex flex-col">
-                <input
+                <Input
                     type="date"
                     name="birthdate"
-                    className="block border w-full p-1.5 rounded-md"
                     id="birthdate"
-                    // required
+                    disabled={isSubmitting}
+                    error={errors.birthdate}
+                    required
                 />
-                {errors.birthdate && !isSubmitting && <Notice theme="red">{errors.birthdate}</Notice>}
+                {errors.birthdate && !isSubmitting && <Notice
+                        className="mt-1"
+                        theme="red"
+                    >{errors.birthdate}</Notice>
+                }
                 </div>
             </div>
             <div className="flex mt-4 space-x-1.5">
                 <div className="input-wrapper w-full flex flex-col">
-                <input
+                <Input
                     type="email"
                     name="email"
-                    className="block border w-full p-1.5 rounded-md"
                     placeholder="Email"
-                    // required
+                    disabled={isSubmitting}
+                    error={errors.email}
+                    required
                 />
-                {errors.email && !isSubmitting && <Notice theme="red">{errors.email}</Notice>}
+                {errors.email && !isSubmitting && <Notice
+                        className="mt-1"
+                        theme="red"
+                    >{errors.email}</Notice>
+                }
                 </div>
                 <div className="input-wrapper w-full flex flex-col">
                 <select
                     className="block border w-full p-1.5 rounded-md"
-                    // required
+                    error={errors.gender}
+                    required
                     name="gender"
                 >
                     <option value="male">Male</option>
                     <option value="female">Female</option>
                 </select>
-                {errors.gender && !isSubmitting && <Notice theme="red">{errors.gender}</Notice>}
+                {errors.gender && !isSubmitting && <Notice
+                        className="mt-1"
+                        theme="red"
+                    >{errors.gender}</Notice>
+                }
                 </div>
             </div>
             <div className="flex mt-4 space-x-1.5">
                 <div className="input-wrapper w-full flex flex-col">
-                <input
+                <Input
                     type="password"
                     name="password"
-                    className="block border w-full p-1.5 rounded-md"
                     placeholder="Password"
-                    // required
+                    disabled={isSubmitting}
+                    error={errors.password}
+                    required
                 />
-                {errors.password && !isSubmitting && <Notice theme="red">{errors.password}</Notice>}
+                {errors.password && !isSubmitting && <Notice
+                        className="mt-1"
+                        theme="red"
+                    >{errors.password}</Notice>
+                }
                 </div>
                 <div className="input-wrapper w-full flex flex-col">
-                <input
+                <Input
                     type="password"
                     name="password_confirmation"
-                    className="block border w-full p-1.5 rounded-md"
                     placeholder="Confirm Password"
-                    // required
+                    disabled={isSubmitting}
+                    error={errors.password_confirmation}
+                    required
                 />
-                {errors.password_confirmation && !isSubmitting && <Notice theme="red">{errors.password_confirmation}</Notice>}
+                {errors.password_confirmation && !isSubmitting && <Notice
+                        claclassName="mt-1"
+                        theme="red"
+                    >{errors.password_confirmation}</Notice>
+                }
                 </div>
             </div>
             </div>
             <div
-            className="form-footer flex mt-4 p-3 border-t flex-col"
+                className="form-footer flex mt-4 p-3 border-t flex-col"
             >
-            {!isSubmitting && success && <div className="bg-lime-200 text-lime-600 notice py-1.5 px-2 my-1 rounded-md">Succesfully Registered</div>}
+            {!isSubmitting && success && <Notice theme="lime" className="mb-2">Succesfully Registered</Notice>}
             <div className="form-actions flex">
                 <Button
                     type="submit"

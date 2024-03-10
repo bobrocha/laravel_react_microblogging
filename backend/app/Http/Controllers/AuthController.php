@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\RegisterRequest;
+use App\Http\Requests\LoginRequest;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
@@ -24,9 +26,17 @@ class AuthController extends Controller
         ], 201);
     }
 
-    public function login()
+    public function login(LoginRequest $request) : array
     {
-        // stub
+        $data          = $request->validated();
+        $authenticated = Auth::attempt($data);
+        $user          = [];
+
+        if($authenticated) {
+            $user = User::where('email', $data['email'])->get()->first();
+        }
+
+        return compact('authenticated', 'user');
     }
 
     public function logout()

@@ -1,16 +1,34 @@
 export default class ResourceRequest {
     constructor(url) {
-        this.url     = url;
-        this.headers = {
-            'Content-Type' : 'application/json',
-            Accept         : 'application/json',
-        };
+        this.url = url;
+
+        this.setHeaders();
     }
 
-    async get() {
+    setHeaders(headers = {}) {
+        if(!Object.keys(headers).length) {
+            this.headers = {
+                'Content-Type' : 'application/json',
+                Accept         : 'application/json',
+            };
+        }
+        else {
+            this.headers = headers;
+        }
+
+        const csrf = this.getCsrfToken();
+
+        if(csrf) {
+            this.headers.credendials     = 'include';
+            this.headers['X-XSRF-TOKEN'] = csrf;
+        }
+    }
+
+    async get(params = {}, returnResponse = true) {
         const options = {
             method  : 'GET',
             headers : this.headers,
+            ...params
         };
 
         try {
@@ -19,17 +37,24 @@ export default class ResourceRequest {
             if(response.status === 400) {
                 throw new Error(`Unable to find resource ${this.url}`);
             }
+
+            if(!returnResponse) {
+                return;
+            }
+
+            return await response.json();
         }
         catch(error) {
             throw new Error(error);
         }
     }
 
-    async post(payload = {}) {
+    async post(payload = {}, params = {}) {
         const options = {
             method  : 'POST',
             body    : JSON.stringify(payload),
             headers : this.headers,
+            ...params,
         };
 
         try {
@@ -68,5 +93,14 @@ export default class ResourceRequest {
 
     async sleep() {
         return new Promise(resolve => setTimeout(resolve, 3000));
+    }
+
+    getCsrfToken() {
+        if(document.cookie) {
+            const cookies = document.cookie.split('; ');
+            const result  = cookies.find(el => el.startsWith('XSRF-TOKEN'));
+
+            return result?.split('=').pop();
+        }
     }
 }
