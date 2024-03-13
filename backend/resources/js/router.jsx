@@ -7,6 +7,7 @@ import Register       from '@/pages/Register/Register';
 import registerAction from '@/pages/Register/action';
 import Login          from '@/pages/Login/Login';
 import loginAction    from '@/pages/Login/action';
+import ProtectedRoute from '@/routes/ProtectedRoute';
 
 const router = createBrowserRouter([
     {
@@ -15,11 +16,11 @@ const router = createBrowserRouter([
         children: [
             {
                 path   : '/account',
-                element: <p>My account</p>,
+                element: <ProtectedRoute><p>My account</p></ProtectedRoute>,
             },
             {
                 path   : '/user',
-                element: <p>My user</p>,
+                element: <ProtectedRoute><p>My user</p></ProtectedRoute>,
             },
         ],
     },

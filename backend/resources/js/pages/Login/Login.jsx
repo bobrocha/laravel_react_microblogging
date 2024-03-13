@@ -23,8 +23,8 @@ export default function Login() {
 
     useEffect(() => {
         if(success) {
-            auth.login(user, () => {console.log('in here');
-            navigate('/user');
+            auth.login(user, () => {
+                navigate('/user');
             });
         }
     }, [success, user]);
