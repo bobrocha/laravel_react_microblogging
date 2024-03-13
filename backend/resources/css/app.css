@@ -2,12 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-button.loading {
+.loading {
     color: transparent;
     position: relative;
 }
 
-button.loading::before {
+.loading::before {
     position: absolute;
     content: '';
     top: 50%;
@@ -19,7 +19,7 @@ button.loading::before {
     transform: translate(-50%, -50%);
 }
 
-button.loading::after {
+.loading::after {
     position: absolute;
     content: '';
     top: 50%;
@@ -44,4 +44,13 @@ button.loading::after {
     to {
         transform: translate(-50%, -50%) rotate(360deg)
     }
+}
+
+button {
+    transition: background-color .15s ease-in-out, color .15s ease-in-out;
+}
+
+
+input:focus {
+    transition: box-shadow .15s ease-in-out;
 }
